@@ -1,0 +1,102 @@
+<template>
+    <lightning-card>
+    <div class="slds-p-around_x-large slds-m-around_large" style="margin-right:5%;margin-left:10%">
+        <div>
+            <span style="font-weight:bold; font-size:20px">Surveys</span>
+            <div class="slds-grid">
+                <div class="slds-size_3-of-4 slds-p-bottom_medium" style="font-size:20px"> 
+                Create surveys and send them to participants. When enabled, email templates and sample surveys are added to your org.
+                </div>
+                <div class="slds-size_1-of-4">
+                    <div dir="rtl">
+                        <div class="slds-form-element slds-checkbox_toggle slds-grid">
+                            <input type="checkbox" name="checkbox-toggle-1" value="checkbox-toggle-1-value" aria-describedby="checkbox-toggle-1" checked="" />
+                            <span id="checkbox-toggle-1" class="slds-checkbox_faux_container">
+                                <span class="slds-checkbox_faux"></span>
+                                <span class="slds-checkbox_on">Enabled</span>
+                                <span class="slds-checkbox_off">Disabled</span>
+                            </span> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-border_bottom"></div>
+        <div>
+            <div class="slds wrap">
+                <div class="slds-size_3-of-4 slds-p-top_large" style="font-weight:bold; font-size:20px">
+                    Select the default community for creating public survey invitations.
+                </div>
+                <div class="slds-size_3-of-4 slds-p-bottom_medium">
+                    <lightning-combobox
+                        value={value}
+                        options={options}
+                        onchange={handleChange}>
+                    </lightning-combobox>           
+                </div>
+            </div>
+        </div>
+        <div class="slds-border_bottom"></div>
+        <template if:true={showPopup}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-id" aria-modal="true" aria-describedby="modal-id" class="slds-modal slds-fade-in-open">
+              <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                  <h2 id="modal-heading-id" class="slds-text-heading_medium slds-hyphenate">New survey</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id">
+                    <div>
+                        <lightning-input type="text" value="Customer Feedback"> </lightning-input>
+                    </div>
+                    <div class="slds-p-top_medium">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <div class="slds-checkbox">
+                                    <input type="checkbox" name="name" id="checkbox-id-1" value="value" />
+                                    <label class="slds-checkbox__label" for="checkbox-id-1">
+                                        <span class="slds-checkbox_faux"></span>
+                                        <span class="slds-form-element__label">Create Survey as a template  <lightning-helptext content="Testing Help Text"></lightning-helptext></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                <footer class="slds-modal__footer">
+                  <lightning-button label="Cancel" onclick={closeModal} class="slds-float_left"></lightning-button>
+                  <lightning-button label="Continue" variant="brand" onclick={closeModal}></lightning-button>
+                </footer>
+              </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+        <div class="slds-p-top_large">
+            <span style="font-weight:bold; font-size:20px">Survey Owners Can Manage Responses</span>
+            <div class="slds-grid">
+                <div class="slds-size_3-of-4 slds-p-bottom_medium" style="font-size:20px"> 
+                Allow survey owners to manage participant responses.
+                </div>
+                <div class="slds-size_1-of-4">
+                    <div dir="rtl">
+                        <div class="slds-form-element slds-checkbox_toggle slds-grid">
+                            <input type="checkbox" name="checkbox-toggle-2" value="checkbox-toggle-2-value" aria-describedby="checkbox-toggle-2" disabled="" />
+                            <span id="checkbox-toggle-2" class="slds-checkbox_faux_container">
+                                <span class="slds-checkbox_faux"></span>
+                                <span class="slds-checkbox_on">Enabled</span>
+                                <span class="slds-checkbox_off">Disabled</span>
+                            </span> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-border_bottom"></div>
+    </div>
+</lightning-card>
+</template>
